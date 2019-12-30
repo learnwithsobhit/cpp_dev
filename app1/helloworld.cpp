@@ -330,8 +330,10 @@ int kmp_search(string str,string kmp){
 
 // }
 
-int heightOFTree(Tree* root,int max){
+int heightOFTree(Tree* root){
 	if(root==NULL) return 0;
+
+	return max(heightOFTree(root->left),heightOFTree(root->right))+1;
 
 
 }
@@ -358,6 +360,9 @@ int main()
 	btree->left->right = new Tree(4);
 	btree->right->left = new Tree(8);
 	btree->right->right = new Tree(10);
+	btree->right->right->right = new Tree(12);
+	btree->right->right->right->left = new Tree(11);
+	cout<<"height of the tree is :"<<heightOFTree(btree)<<endl;;
 
 	dfs(btree);
 	cout << endl;
